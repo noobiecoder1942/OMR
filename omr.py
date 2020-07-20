@@ -101,23 +101,38 @@ def hamming_distance(template, reference):
 
 	return result
 
-## handle kernerls with even dimensions
+## handle kernels with even dimensions
 def assert_dimensions_of_kernel(template):
-	h, w = template.shape
+    '''
+    This function checks if the dimensions
+    of the template are odd. While this is
+    most certainly not necessary, it makes
+    calculations easier.
+    
+    Arguments:
+    ----------
+    template: 2d array
+    
+    Returns:
+    --------
+    template with both dimensions made odd
+    (if required) by padding with zeros.
+    '''
+    h, w = template.shape
 
-	if h%2 == 0:
-		temp = np.zeros(shape = (h+1, w))
-		temp[0:h, :] = template
-		template = temp
+    if h%2 == 0:
+        temp = np.zeros(shape = (h+1, w))
+        temp[0:h, :] = template
+        template = temp
 
-	h, w = template.shape
+    h, w = template.shape
 
-	if w%2 == 0:
-		temp = np.zeros(shape = (h, w+1))
-		temp[:, 0:w] = template
-		template = temp
+    if w%2 == 0:
+        temp = np.zeros(shape = (h, w+1))
+        temp[:, 0:w] = template
+        template = temp
 
-	return template
+    return template
 
 # gives coordinates of all the bounding box.
 def plot_bounding_box(template, reference, threshold, color_palette):
