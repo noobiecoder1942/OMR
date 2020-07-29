@@ -22,7 +22,7 @@ Next steps:
 
 1. Symbol recognition: Currently only symbols are detected. Recognising these symbols is a challenge in case of blurry or not-so-straight images.
 2. Generalize Hough Transform to adapt to any orientation of the image.
-
+3. Minimalize overallping bounding boxes using Non-Max Suppression.
 
 Usage:
 ```
